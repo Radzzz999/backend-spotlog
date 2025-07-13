@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->decimal('latitude', 10, 6)->nullable();
             $table->decimal('longitude', 10, 6)->nullable();
             $table->enum('status', ['pending', 'valid', 'invalid'])->default('pending');
+            $table->text('admin_comment')->nullable();
             $table->timestamps();
         });
     }

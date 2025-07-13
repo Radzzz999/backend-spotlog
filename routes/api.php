@@ -12,6 +12,7 @@ use App\Http\Middleware\IsWorker;
 // Public routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::put('/logs/{id}/comment', [LogController::class, 'updateComment']);
 
 // Protected routes (auth:sanctum)
 Route::middleware('auth:sanctum')->group(function () {
@@ -28,6 +29,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/logs', [LogController::class, 'index']);
     Route::post('/logs', [LogController::class, 'store']);
     Route::get('/logs/{id}', [LogController::class, 'show']);
+    Route::put('/logs/{id}', [LogController::class, 'update']);
+    Route::get('/logs/task/{taskId}', [LogController::class, 'logByTask']);
+    Route::get('/admin/worker-tasks', [TaskController::class, 'getWorkerTasks']);
+    Route::get('/admin/logs', [LogController::class, 'logsForAdmin']);
+    
+
 
     // Admin-only routes
     Route::middleware(IsAdmin::class)

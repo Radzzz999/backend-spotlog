@@ -26,5 +26,4 @@ class Log extends Model
     public function task() {
         return $this->belongsTo(Task::class);
     }
-
 }
